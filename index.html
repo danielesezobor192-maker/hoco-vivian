@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#10071f">
+<title>💌 Hoco?</title>
+
+<style>
+:root{
+--pink:#ff4f9a;
+--purple:#8b5cf6;
+--dark:#10071f;
+--glass:rgba(255,255,255,.08);
+}
+
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+margin:0;
+width:100%;
+height:100%;
+overflow:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at 20% 10%,#7b194f 0%,#32104d 40%,#12081f 100%);
+
+color:white;
+
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.glow{
+position:fixed;
+width:320px;
+height:320px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.35;
+animation:drift 8s ease-in-out infinite alternate;
+}
+
+.g1{
+background:#ff3d9a;
+top:-120px;
+left:-80px;
+}
+
+.g2{
+background:#7c3aed;
+right:-120px;
+bottom:-80px;
+animation-delay:-4s;
+}
+
+@keyframes drift{
+to{
+transform:translate(45px,-25px) scale(1.15);
+}
+}
+
+/* ---------- SCREENS ---------- */
+
+.screen{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:22px;
+}
+
+.hidden{
+display:none!important;
+}
+
+/* ---------- CARD ---------- */
+
+.card{
+
+position:relative;
+
+width:min(92vw,430px);
+
+padding:30px 24px;
+
+border-radius:32px;
+
+background:var(--glass);
+
+backdrop-filter:blur(26px);
+-webkit-backdrop-filter:blur(26px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.4),
+inset 0 1px rgba(255,255,255,.08);
+
+text-align:center;
+
+overflow:hidden;
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+right:0;
+
+height:1px;
+
+background:rgba(255,255,255,.18);
+
+}
+
+.envelope{
+
+font-size:82px;
+
+animation:float 2.4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-12px) rotate(2deg);
+
+}
+
+}
+
+h1{
+
+font-size:42px;
+
+margin:12px 0 8px;
+
+letter-spacing:-1.3px;
+
+}
+
+p{
+
+font-size:18px;
+
+line-height:1.5;
+
+opacity:.95;
+
+}
+
+.sub{
+
+font-size:13px;
+
+opacity:.65;
+
+margin-top:18px;
+
+}
+
+/* ---------- BUTTONS ---------- */
+
+button{
+
+border:none;
+
+cursor:pointer;
+
+font-size:17px;
+
+font-weight:800;
+
+padding:15px 32px;
+
+border-radius:999px;
+
+transition:.2s;
+
+}
+
+button:active{
+
+transform:scale(.95);
+
+}
+
+.primary{
+
+background:white;
+
+color:#e83d91;
+
+box-shadow:0 12px 30px rgba(255,79,154,.35);
+
+}
+
+.play{
+
+position:relative;
+
+height:245px;
+
+margin-top:10px;
+
+}
+
+#yes{
+
+position:absolute;
+
+left:50%;
+
+bottom:10px;
+
+transform:translateX(-50%);
+
+background:white;
+
+color:#e83d91;
+
+box-shadow:0 12px 30px rgba(255,255,255,.25);
+
+}
+
+#no{
+
+position:absolute;
+
+left:50%;
+
+top:10px;
+
+transform:translateX(-50%);
+
+background:#17131e;
+
+color:white;
+
+border:1px solid rgba(255,255,255,.12);
+
+touch-action:none;
+
+}
+
+.counter{
+
+font-size:13px;
+
+opacity:.7;
+
+}
+
+/* ---------- HEARTS ---------- */
+
+.heart{
+
+position:fixed;
+
+bottom:-30px;
+
+font-size:22px;
+
+pointer-events:none;
+
+animation:rise linear forwards;
+
+z-index:6;
+
+}
+
+@keyframes rise{
+
+to{
+
+transform:translateY(-110vh) rotate(30deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ---------- PETALS ---------- */
+
+.petal{
+
+position:fixed;
+
+top:-20px;
+
+font-size:18px;
+
+pointer-events:none;
+
+animation:petalFall linear forwards;
+
+z-index:3;
+
+}
+
+@keyframes petalFall{
+
+to{
+
+transform:
+translate3d(var(--x),110vh,0)
+rotate(540deg);
+
+opacity:.9;
+
+}
+
+}
+
+/* ---------- CONFETTI ---------- */
+
+.confetti{
+
+position:fixed;
+
+top:-20px;
+
+width:10px;
+
+height:18px;
+
+border-radius:3px;
+
+animation:fall linear forwards;
+
+z-index:10;
+
+}
+
+@keyframes fall{
+
+to{
+
+transform:
+translate3d(var(--x),110vh,0)
+rotate(760deg);
+
+opacity:.95;
+
+}
+
+}
+
+/* ---------- SUCCESS ---------- */
+
+.big{
+
+font-size:82px;
+
+animation:pop .7s ease;
+
+}
+
+@keyframes pop{
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+}
+
+/* ---------- SPARKLES ---------- */
+
+.sparkle{
+
+position:absolute;
+
+font-size:16px;
+
+animation:twinkle 1.8s infinite;
+
+}
+
+@keyframes twinkle{
+
+50%{
+
+opacity:.3;
+transform:scale(.7);
+
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<!-- INTRO -->
+
+<section class="screen" id="intro">
+
+<div class="card">
+
+<div class="sparkle" style="top:20px;left:30px;">✨</div>
+<div class="sparkle" style="top:35px;right:35px;">✨</div>
+
+<div class="envelope">💌</div>
+
+<h1>Hey...</h1>
+
+<p>I have one question.</p>
+
+<button class="primary" id="openBtn">
+Open 💖
+</button>
+
+<div class="sub">
+Tap when you're ready.
+</div>
+
+</div>
+
+</section>
+
+<!-- PROPOSAL -->
+
+<section class="screen hidden" id="proposal">
+
+<div class="card">
+
+<div style="font-size:34px;">🌸✨</div>
+
+<h1>Vivian,</h1>
+
+<p style="font-size:22px;font-weight:700;">
+will you go to Homecoming with me?
+</p>
+
+<div class="play" id="playArea">
+
+<button id="no">
+No
+</button>
+
+<button id="yes">
+YES 💖
+</button>
+
+</div>
+
+<div class="counter">
+Nice try 😂 <span id="count">0</span>/25
+</div>
+
+</div>
+
+</section>
+
+<!-- YES -->
+
+<section class="screen hidden" id="yesScreen">
+
+<div class="card">
+
+<div class="big">🎉</div>
+
+<h1>LET'S GOOOO!</h1>
+
+<p>
+Homecoming with you sounds perfect, Vivian 💖
+</p>
+
+<p class="sub">
+Now we gotta plan the fit 😭
+</p>
+
+</div>
+
+</section>
+
+<!-- NO -->
+
+<section class="screen hidden" id="noScreen">
+
+<div class="card">
+
+<div class="big">😔</div>
+
+<h1>Dang...</h1>
+
+<p>
+You finally caught the No button after 25 attempts.
+</p>
+
+</div>
+
+</section>
+
+<script>
+
+const intro=document.getElementById("intro");
+const proposal=document.getElementById("proposal");
+const yesScreen=document.getElementById("yesScreen");
+const noScreen=document.getElementById("noScreen");
+
+const openBtn=document.getElementById("openBtn");
+const yesBtn=document.getElementById("yes");
+const noBtn=document.getElementById("no");
+
+const playArea=document.getElementById("playArea");
+const counter=document.getElementById("count");
+
+let attempts=0;
+
+/* ---------- INTRO ---------- */
+
+openBtn.onclick=()=>{
+
+intro.classList.add("hidden");
+proposal.classList.remove("hidden");
+
+for(let i=0;i<25;i++){
+
+setTimeout(createHeart,i*90);
+
+}
+
+for(let i=0;i<40;i++){
+
+setTimeout(createPetal,i*60);
+
+}
+
+};
+
+/* ---------- HEART ---------- */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.textContent=["💖","💕","💗","✨"][Math.floor(Math.random()*4)];
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),5000);
+
+}
+
+/* ---------- PETALS ---------- */
+
+function createPetal(){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.textContent=["🌸","💮","✨"][Math.floor(Math.random()*3)];
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.setProperty("--x",(Math.random()*120-60)+"px");
+
+petal.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),6000);
+
+}
+
+/* ---------- NO DODGE ---------- */
+
+function dodge(e){
+
+e.preventDefault();
+e.stopPropagation();
+
+if(attempts>=25)return;
+
+attempts++;
+counter.textContent=attempts;
+
+const maxX=Math.max(0,playArea.clientWidth-noBtn.offsetWidth);
+const maxY=Math.max(0,playArea.clientHeight-noBtn.offsetHeight);
+
+noBtn.style.left=Math.random()*maxX+"px";
+noBtn.style.top=Math.random()*maxY+"px";
+noBtn.style.transform="none";
+
+if(navigator.vibrate){
+
+navigator.vibrate(18);
+
+}
+
+if(attempts===25){
+
+setTimeout(()=>{
+
+proposal.classList.add("hidden");
+noScreen.classList.remove("hidden");
+
+},180);
+
+}
+
+}
+
+["pointerdown","pointerenter","touchstart","click"].forEach(event=>{
+
+noBtn.addEventListener(event,dodge,{passive:false});
+
+});
+
+/* ---------- YES ---------- */
+
+yesBtn.onclick=()=>{
+
+proposal.classList.add("hidden");
+yesScreen.classList.remove("hidden");
+
+launchConfetti();
+
+for(let i=0;i<60;i++){
+
+setTimeout(createHeart,i*55);
+
+}
+
+};
+
+/* ---------- CONFETTI ---------- */
+
+function launchConfetti(){
+
+for(let i=0;i<200;i++){
+
+const piece=document.createElement("div");
+
+piece.className="confetti";
+
+piece.style.left=Math.random()*100+"vw";
+
+piece.style.setProperty("--x",(Math.random()*260-130)+"px");
+
+piece.style.background=`hsl(${Math.random()*360},95%,65%)`;
+
+piece.style.animationDuration=(2+Math.random()*2)+"s";
+
+piece.style.animationDelay=Math.random()*.5+"s";
+
+document.body.appendChild(piece);
+
+setTimeout(()=>piece.remove(),4500);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
