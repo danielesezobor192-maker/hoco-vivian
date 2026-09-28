@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#172019">
+<title>For Vivian 💌</title>
+
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+html,body{
+margin:0;
+width:100%;
+height:100%;
+overflow:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
+}
+
+body{
+color:#fff;
+background:
+radial-gradient(circle at 15% 10%,#e7a06c 0,transparent 27%),
+radial-gradient(circle at 90% 85%,#8b687e 0,transparent 30%),
+linear-gradient(145deg,#26352b,#172019 55%,#101712)
+}
+
+button{
+font:inherit;
+-webkit-appearance:none;
+border:0;
+cursor:pointer
+}
+
+.screen{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:22px;
+transition:opacity .5s,transform .5s
+}
+
+.hidden{
+display:none!important
+}
+
+.glow{
+position:fixed;
+border-radius:50%;
+filter:blur(80px);
+pointer-events:none;
+opacity:.35
+}
+
+.glow1{
+width:260px;
+height:260px;
+background:#f5a46b;
+top:-100px;
+left:-80px
+}
+
+.glow2{
+width:300px;
+height:300px;
+background:#b783a2;
+right:-120px;
+bottom:-120px
+}
+
+.card{
+position:relative;
+width:min(94vw,440px);
+padding:28px 23px 24px;
+border:1px solid rgba(255,255,255,.2);
+border-radius:34px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+box-shadow:0 30px 80px rgba(0,0,0,.38);
+text-align:center;
+overflow:hidden
+}
+
+.card:after{
+content:"";
+position:absolute;
+inset:1px;
+border-radius:33px;
+pointer-events:none;
+box-shadow:inset 0 1px rgba(255,255,255,.16)
+}
+
+.eyebrow{
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+opacity:.65;
+margin-bottom:12px
+}
+
+h1{
+font-size:43px;
+line-height:1;
+letter-spacing:-1.8px;
+margin:10px 0
+}
+
+p{
+font-size:17px;
+line-height:1.5;
+margin:10px 0;
+opacity:.92
+}
+
+.cow-wrap{
+width:100%;
+height:155px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:-5px 0 4px
+}
+
+.cow{
+width:245px;
+height:145px;
+filter:drop-shadow(0 16px 15px rgba(0,0,0,.2));
+animation:cowFloat 3s ease-in-out infinite
+}
+
+@keyframes cowFloat{
+50%{transform:translateY(-7px) rotate(1deg)}
+}
+
+.cow2{
+animation-delay:-1.2s;
+transform:scale(.82)
+}
+
+.open{
+margin-top:18px;
+padding:15px 30px;
+border-radius:999px;
+background:#fff;
+color:#4f604d;
+font-weight:800;
+font-size:17px;
+box-shadow:0 12px 30px rgba(0,0,0,.2)
+}
+
+.open:active{
+transform:scale(.95)
+}
+
+.tiny{
+font-size:12px;
+opacity:.55;
+margin-top:15px
+}
+
+.question-cows{
+display:flex;
+justify-content:center;
+align-items:end;
+height:105px;
+margin-top:-5px
+}
+
+.question-cows .cow{
+width:155px;
+height:100px
+}
+
+.question-cows .cow:first-child{
+transform:scaleX(-1) rotate(-2deg)
+}
+
+.question-cows .cow:last-child{
+transform:rotate(2deg)
+}
+
+.question{
+font-size:39px;
+margin-top:3px
+}
+
+.question-text{
+font-size:21px;
+font-weight:750;
+margin:10px auto;
+max-width:340px
+}
+
+.play{
+position:relative;
+height:235px;
+margin-top:8px
+}
+
+.btn{
+position:absolute;
+padding:15px 28px;
+border-radius:999px;
+font-size:17px;
+font-weight:850;
+touch-action:none
+}
+
+#yes{
+left:50%;
+bottom:15px;
+transform:translateX(-50%);
+background:#fff;
+color:#52664f;
+box-shadow:0 12px 32px rgba(0,0,0,.2)
+}
+
+#no{
+left:50%;
+top:12px;
+transform:translateX(-50%);
+background:rgba(20,25,21,.85);
+color:#fff;
+border:1px solid rgba(255,255,255,.15)
+}
+
+.counter{
+font-size:12px;
+opacity:.55
+}
+
+.heart{
+position:fixed;
+bottom:-30px;
+font-size:22px;
+pointer-events:none;
+z-index:20;
+animation:rise linear forwards
+}
+
+@keyframes rise{
+to{
+transform:translateY(-110vh) rotate(30deg);
+opacity:0
+}
+}
+
+.petal{
+position:fixed;
+top:-30px;
+font-size:17px;
+pointer-events:none;
+z-index:3;
+animation:petal linear forwards
+}
+
+@keyframes petal{
+to{
+transform:translate3d(var(--x),110vh,0) rotate(480deg);
+opacity:0
+}
+}
+
+.confetti{
+position:fixed;
+top:-25px;
+width:9px;
+height:17px;
+border-radius:3px;
+z-index:30;
+animation:fall linear forwards
+}
+
+@keyframes fall{
+to{
+transform:translate3d(var(--x),110vh,0) rotate(760deg);
+opacity:0
+}
+}
+
+.success-cow{
+width:260px;
+height:155px;
+animation:celebrate .8s ease-in-out infinite alternate
+}
+
+@keyframes celebrate{
+to{transform:translateY(-8px) rotate(-2deg) scale(1.03)}
+}
+
+.big{
+font-size:62px;
+margin-bottom:-5px
+}
+
+.fade{
+animation:fadeIn 1s ease forwards
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:none}
+}
+
+.sparkle{
+position:absolute;
+font-size:18px;
+animation:twinkle 1.8s ease-in-out infinite
+}
+
+@keyframes twinkle{
+50%{opacity:.2;transform:scale(.65)}
+}
+
+@media(max-height:700px){
+.card{padding:20px}
+.cow-wrap{height:120px}
+.cow{height:115px}
+.question-cows{height:80px}
+.question-cows .cow{height:80px}
+.play{height:200px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<section class="screen" id="intro">
+<div class="card">
+<div class="sparkle" style="top:20px;left:28px">✦</div>
+<div class="sparkle" style="top:32px;right:30px">✧</div>
+
+<div class="eyebrow">A little something for you</div>
+
+<div class="cow-wrap">
+<svg class="cow" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="150" cy="145" rx="105" ry="10" fill="#000" opacity=".16"/>
+<path d="M63 85Q55 48 88 42Q120 36 151 50Q182 35 213 43Q245 50 237 87L228 128H72Z" fill="#b8734f"/>
+<path d="M75 78Q48 70 45 91Q43 113 70 117L92 105Z" fill="#d49a70"/>
+<path d="M225 78Q252 70 255 91Q257 113 230 117L208 105Z" fill="#d49a70"/>
+<path d="M76 67Q63 42 87 28Q111 13 137 30L150 48L163 30Q189 13 213 28Q237 42 224 67Q203 51 181 57Q150 67 119 57Q97 51 76 67Z" fill="#e8d3b5"/>
+<path d="M94 37Q80 19 91 10Q104 20 111 34M206 37Q220 19 209 10Q196 20 189 34" stroke="#e8d3b5" stroke-width="12" fill="none" stroke-linecap="round"/>
+<ellipse cx="119" cy="76" rx="8" ry="10" fill="#fff"/>
+<ellipse cx="181" cy="76" rx="8" ry="10" fill="#fff"/>
+<circle cx="121" cy="78" r="4" fill="#171717"/>
+<circle cx="179" cy="78" r="4" fill="#171717"/>
+<ellipse cx="150" cy="104" rx="32" ry="22" fill="#7c4938"/>
+<ellipse cx="137" cy="104" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="163" cy="104" rx="5" ry="4" fill="#211715"/>
+<path d="M138 116Q150 125 162 116" stroke="#281814" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M82 119V146M108 121V149M192 121V149M218 119V146" stroke="#8c573e" stroke-width="13" stroke-linecap="round"/>
+</svg>
+</div>
+
+<h1>Hey, Vivian...</h1>
+<p>I have one very important question.</p>
+
+<button class="open" id="openBtn">Open 💌</button>
+
+<div class="tiny">tap when you're ready</div>
+</div>
+</section>
+
+<section class="screen hidden" id="proposal">
+<div class="card">
+
+<div class="eyebrow">Homecoming?</div>
+
+<div class="question-cows">
+
+<svg class="cow" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+<path d="M63 85Q55 48 88 42Q120 36 151 50Q182 35 213 43Q245 50 237 87L228 128H72Z" fill="#b8734f"/>
+<path d="M75 78Q48 70 45 91Q43 113 70 117L92 105Z" fill="#d49a70"/>
+<path d="M225 78Q252 70 255 91Q257 113 230 117L208 105Z" fill="#d49a70"/>
+<path d="M76 67Q63 42 87 28Q111 13 137 30L150 48L163 30Q189 13 213 28Q237 42 224 67Q203 51 181 57Q150 67 119 57Q97 51 76 67Z" fill="#e8d3b5"/>
+<path d="M94 37Q80 19 91 10M206 37Q220 19 209 10" stroke="#e8d3b5" stroke-width="12" fill="none" stroke-linecap="round"/>
+<circle cx="119" cy="77" r="6" fill="#171717"/>
+<circle cx="181" cy="77" r="6" fill="#171717"/>
+<ellipse cx="150" cy="104" rx="32" ry="22" fill="#7c4938"/>
+<ellipse cx="137" cy="104" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="163" cy="104" rx="5" ry="4" fill="#211715"/>
+<path d="M138 116Q150 125 162 116" stroke="#281814" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M82 119V146M108 121V149M192 121V149M218 119V146" stroke="#8c573e" stroke-width="13" stroke-linecap="round"/>
+</svg>
+
+<svg class="cow cow2" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+<path d="M63 85Q55 48 88 42Q120 36 151 50Q182 35 213 43Q245 50 237 87L228 128H72Z" fill="#b8734f"/>
+<path d="M75 78Q48 70 45 91Q43 113 70 117L92 105Z" fill="#d49a70"/>
+<path d="M225 78Q252 70 255 91Q257 113 230 117L208 105Z" fill="#d49a70"/>
+<path d="M76 67Q63 42 87 28Q111 13 137 30L150 48L163 30Q189 13 213 28Q237 42 224 67Q203 51 181 57Q150 67 119 57Q97 51 76 67Z" fill="#e8d3b5"/>
+<path d="M94 37Q80 19 91 10M206 37Q220 19 209 10" stroke="#e8d3b5" stroke-width="12" fill="none" stroke-linecap="round"/>
+<circle cx="119" cy="77" r="6" fill="#171717"/>
+<circle cx="181" cy="77" r="6" fill="#171717"/>
+<ellipse cx="150" cy="104" rx="32" ry="22" fill="#7c4938"/>
+<ellipse cx="137" cy="104" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="163" cy="104" rx="5" ry="4" fill="#211715"/>
+<path d="M138 116Q150 125 162 116" stroke="#281814" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M82 119V146M108 121V149M192 121V149M218 119V146" stroke="#8c573e" stroke-width="13" stroke-linecap="round"/>
+</svg>
+
+</div>
+
+<h1 class="question">Vivian,</h1>
+
+<p class="question-text">
+Will you go to Homecoming with me? 💗
+</p>
+
+<div class="play" id="playArea">
+<button class="btn" id="no">No</button>
+<button class="btn" id="yes">YES 💖</button>
+</div>
+
+<div class="counter">
+No attempts: <span id="count">0</span>/25
+</div>
+
+</div>
+</section>
+
+<section class="screen hidden" id="yesScreen">
+<div class="card fade">
+
+<div class="big">🎉</div>
+
+<svg class="success-cow" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="150" cy="145" rx="105" ry="10" fill="#000" opacity=".16"/>
+<path d="M63 85Q55 48 88 42Q120 36 151 50Q182 35 213 43Q245 50 237 87L228 128H72Z" fill="#b8734f"/>
+<path d="M75 78Q48 70 45 91Q43 113 70 117L92 105Z" fill="#d49a70"/>
+<path d="M225 78Q252 70 255 91Q257 113 230 117L208 105Z" fill="#d49a70"/>
+<path d="M76 67Q63 42 87 28Q111 13 137 30L150 48L163 30Q189 13 213 28Q237 42 224 67Q203 51 181 57Q150 67 119 57Q97 51 76 67Z" fill="#e8d3b5"/>
+<path d="M94 37Q80 19 91 10M206 37Q220 19 209 10" stroke="#e8d3b5" stroke-width="12" fill="none" stroke-linecap="round"/>
+<circle cx="119" cy="77" r="6" fill="#171717"/>
+<circle cx="181" cy="77" r="6" fill="#171717"/>
+<ellipse cx="150" cy="104" rx="32" ry="22" fill="#7c4938"/>
+<ellipse cx="137" cy="104" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="163" cy="104" rx="5" ry="4" fill="#211715"/>
+<path d="M136 113Q150 130 164 113" stroke="#281814" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M82 119V146M108 121V149M192 121V149M218 119V146" stroke="#8c573e" stroke-width="13" stroke-linecap="round"/>
+</svg>
+
+<h1>LET'S GOOOO! 💗</h1>
+
+<p>
+Homecoming with you sounds perfect.
+</p>
+
+<p class="tiny">
+Now we gotta plan the fit 😭
+</p>
+
+</div>
+</section>
+
+<section class="screen hidden" id="noScreen">
+<div class="card fade">
+
+<div class="big">🥲</div>
+
+<h1>You caught it.</h1>
+
+<p>
+After 25 attempts, the No button finally gave up.
+</p>
+
+<p class="tiny">
+The cows are disappointed.
+</p>
+
+</div>
+</section>
+
+<script>
+const intro=document.getElementById("intro")
+const proposal=document.getElementById("proposal")
+const yesScreen=document.getElementById("yesScreen")
+const noScreen=document.getElementById("noScreen")
+const openBtn=document.getElementById("openBtn")
+const yesBtn=document.getElementById("yes")
+const noBtn=document.getElementById("no")
+const playArea=document.getElementById("playArea")
+const counter=document.getElementById("count")
+
+let attempts=0
+
+openBtn.onclick=()=>{
+intro.classList.add("hidden")
+proposal.classList.remove("hidden")
+
+for(let i=0;i<25;i++)setTimeout(createHeart,i*90)
+for(let i=0;i<35;i++)setTimeout(createPetal,i*70)
+}
+
+function createHeart(){
+const h=document.createElement("div")
+h.className="heart"
+h.textContent=["💗","💖","💕","✨"][Math.floor(Math.random()*4)]
+h.style.left=Math.random()*100+"vw"
+h.style.animationDuration=3+Math.random()*2+"s"
+document.body.appendChild(h)
+setTimeout(()=>h.remove(),5000)
+}
+
+function createPetal(){
+const p=document.createElement("div")
+p.className="petal"
+p.textContent=["🌸","✿","✨"][Math.floor(Math.random()*3)]
+p.style.left=Math.random()*100+"vw"
+p.style.setProperty("--x",(Math.random()*160-80)+"px")
+p.style.animationDuration=3+Math.random()*3+"s"
+document.body.appendChild(p)
+setTimeout(()=>p.remove(),6500)
+}
+
+function dodge(e){
+e.preventDefault()
+e.stopPropagation()
+
+if(attempts>=25)return
+
+attempts++
+counter.textContent=attempts
+
+const maxX=Math.max(0,playArea.clientWidth-noBtn.offsetWidth)
+const maxY=Math.max(0,playArea.clientHeight-noBtn.offsetHeight)
+
+noBtn.style.left=Math.random()*maxX+"px"
+noBtn.style.top=Math.random()*maxY+"px"
+noBtn.style.transform="none"
+
+if(navigator.vibrate)navigator.vibrate(20)
+
+if(attempts===25){
+setTimeout(()=>{
+proposal.classList.add("hidden")
+noScreen.classList.remove("hidden")
+},180)
+}
+}
+
+["pointerdown","pointerenter","touchstart","click"].forEach(event=>{
+noBtn.addEventListener(event,dodge,{passive:false})
+})
+
+yesBtn.onclick=()=>{
+proposal.classList.add("hidden")
+yesScreen.classList.remove("hidden")
+
+launchConfetti()
+
+for(let i=0;i<70;i++)setTimeout(createHeart,i*50)
+
+if(navigator.vibrate)navigator.vibrate([30,40,60,40,100])
+}
+
+function launchConfetti(){
+for(let i=0;i<220;i++){
+const c=document.createElement("div")
+c.className="confetti"
+c.style.left=Math.random()*100+"vw"
+c.style.setProperty("--x",(Math.random()*280-140)+"px")
+c.style.background=`hsl(${Math.random()*360},90%,65%)`
+c.style.animationDuration=2+Math.random()*2+"s"
+c.style.animationDelay=Math.random()*.45+"s"
+document.body.appendChild(c)
+setTimeout(()=>c.remove(),5000)
+}
+}
+</script>
+
+</body>
+</html>
