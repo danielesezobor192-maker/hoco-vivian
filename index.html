@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#10071f">
+<title>💌 Hoco?</title>
+
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{
+background:radial-gradient(circle at 20% 10%,#7b194f 0,#32104d 40%,#12081f 100%);
+color:white;
+}
+.screen{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;padding:20px;transition:.5s}
+.hidden{opacity:0;pointer-events:none;transform:scale(.97)}
+.card{
+width:min(92vw,430px);
+padding:28px;
+border-radius:30px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 25px 70px rgba(0,0,0,.35);
+text-align:center;
+}
+.cow{width:220px;height:auto;animation:float 2.8s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+h1{font-size:42px;margin:10px 0}
+p{font-size:18px;line-height:1.5}
+button{
+border:none;
+padding:15px 30px;
+border-radius:999px;
+font-size:17px;
+font-weight:800;
+cursor:pointer;
+transition:.2s;
+}
+button:active{transform:scale(.96)}
+.primary{background:white;color:#e83d91;width:100%;margin-top:18px}
+.play{position:relative;height:220px;margin-top:12px}
+#yes{
+position:absolute;
+left:50%;
+bottom:12px;
+transform:translateX(-50%);
+background:white;
+color:#e83d91;
+}
+#no{
+position:absolute;
+left:50%;
+top:12px;
+transform:translateX(-50%);
+background:#17131e;
+color:white;
+touch-action:none;
+}
+.counter{font-size:13px;opacity:.7;margin-top:8px}
+.big{font-size:70px}
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:22px;
+pointer-events:none;
+animation:rise linear forwards;
+}
+@keyframes rise{
+to{
+transform:translateY(-120vh) rotate(30deg);
+opacity:0;
+}
+}
+.confetti{
+position:fixed;
+top:-20px;
+width:10px;
+height:18px;
+border-radius:3px;
+animation:fall linear forwards;
+}
+@keyframes fall{
+to{
+transform:translate3d(var(--x),110vh,0) rotate(720deg);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<section class="screen" id="intro">
+<div class="card">
+
+<svg class="cow" viewBox="0 0 300 180">
+<path d="M70 75Q55 45 85 30Q115 15 145 40L150 55L155 40Q185 15 215 30Q245 45 230 75Q205 60 180 65Q150 75 120 65Q95 60 70 75Z" fill="#E8D3B5"/>
+<path d="M60 95Q50 55 90 50Q120 45 150 60Q180 45 210 50Q250 55 240 95L230 135H70Z" fill="#B8734F"/>
+<path d="M80 88Q45 80 45 105Q45 125 70 125L90 110Z" fill="#D49A70"/>
+<path d="M220 88Q255 80 255 105Q255 125 230 125L210 110Z" fill="#D49A70"/>
+<path d="M95 40Q80 18 92 10M205 40Q220 18 208 10" stroke="#E8D3B5" stroke-width="10" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="82" r="7" fill="#171717"/>
+<circle cx="180" cy="82" r="7" fill="#171717"/>
+<ellipse cx="150" cy="108" rx="34" ry="24" fill="#7C4938"/>
+<ellipse cx="138" cy="108" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="162" cy="108" rx="5" ry="4" fill="#211715"/>
+<path d="M138 120Q150 130 162 120" stroke="#281814" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M90 122V150M112 124V152M188 124V152M210 122V150" stroke="#8C573E" stroke-width="12" stroke-linecap="round"/>
+</svg>
+
+<h1>Hey Vivian...</h1>
+
+<p>I have one little question.</p>
+
+<button class="primary" id="openBtn">Open 💖</button>
+
+</div>
+</section>
+
+<section class="screen hidden" id="proposal">
+<div class="card">
+
+<svg class="cow" viewBox="0 0 300 180">
+<path d="M70 75Q55 45 85 30Q115 15 145 40L150 55L155 40Q185 15 215 30Q245 45 230 75Q205 60 180 65Q150 75 120 65Q95 60 70 75Z" fill="#E8D3B5"/>
+<path d="M60 95Q50 55 90 50Q120 45 150 60Q180 45 210 50Q250 55 240 95L230 135H70Z" fill="#B8734F"/>
+<path d="M80 88Q45 80 45 105Q45 125 70 125L90 110Z" fill="#D49A70"/>
+<path d="M220 88Q255 80 255 105Q255 125 230 125L210 110Z" fill="#D49A70"/>
+<path d="M95 40Q80 18 92 10M205 40Q220 18 208 10" stroke="#E8D3B5" stroke-width="10" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="82" r="7" fill="#171717"/>
+<circle cx="180" cy="82" r="7" fill="#171717"/>
+<ellipse cx="150" cy="108" rx="34" ry="24" fill="#7C4938"/>
+<ellipse cx="138" cy="108" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="162" cy="108" rx="5" ry="4" fill="#211715"/>
+<path d="M138 120Q150 130 162 120" stroke="#281814" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M90 122V150M112 124V152M188 124V152M210 122V150" stroke="#8C573E" stroke-width="12" stroke-linecap="round"/>
+</svg>
+
+<h1>Vivian,</h1>
+
+<p style="font-size:22px;font-weight:700;">Will you go to Homecoming with me?</p>
+
+<div class="play" id="playArea">
+<button id="no">No</button>
+<button id="yes">YES 💖</button>
+</div>
+
+<div class="counter">Nice try 😂 <span id="count">0</span>/25</div>
+
+</div>
+</section>
+
+<section class="screen hidden" id="yesScreen">
+<div class="card">
+
+<div class="big">🎉</div>
+
+<svg class="cow" viewBox="0 0 300 180">
+<path d="M70 75Q55 45 85 30Q115 15 145 40L150 55L155 40Q185 15 215 30Q245 45 230 75Q205 60 180 65Q150 75 120 65Q95 60 70 75Z" fill="#E8D3B5"/>
+<path d="M60 95Q50 55 90 50Q120 45 150 60Q180 45 210 50Q250 55 240 95L230 135H70Z" fill="#B8734F"/>
+<path d="M80 88Q45 80 45 105Q45 125 70 125L90 110Z" fill="#D49A70"/>
+<path d="M220 88Q255 80 255 105Q255 125 230 125L210 110Z" fill="#D49A70"/>
+<path d="M95 40Q80 18 92 10M205 40Q220 18 208 10" stroke="#E8D3B5" stroke-width="10" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="82" r="7" fill="#171717"/>
+<circle cx="180" cy="82" r="7" fill="#171717"/>
+<ellipse cx="150" cy="108" rx="34" ry="24" fill="#7C4938"/>
+<ellipse cx="138" cy="108" rx="5" ry="4" fill="#211715"/>
+<ellipse cx="162" cy="108" rx="5" ry="4" fill="#211715"/>
+<path d="M136 118Q150 135 164 118" stroke="#281814" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M90 122V150M112 124V152M188 124V152M210 122V150" stroke="#8C573E" stroke-width="12" stroke-linecap="round"/>
+<path d="M108 68Q120 55 135 68M165 68Q180 55 192 68" stroke="#ff4f9a" stroke-width="6" fill="none" stroke-linecap="round"/>
+<circle cx="121" cy="73" r="10" fill="none" stroke="#ff4f9a" stroke-width="4"/>
+<circle cx="179" cy="73" r="10" fill="none" stroke="#ff4f9a" stroke-width="4"/>
+</svg>
+
+<h1>LET'S GOOO!</h1>
+
+<p>Homecoming with you sounds perfect. 💖</p>
+
+</div>
+</section>
+
+<section class="screen hidden" id="noScreen">
+<div class="card">
+<div class="big">😔</div>
+<h1>Dang...</h1>
+<p>You finally caught the No button after 25 attempts.</p>
+</div>
+</section>
+
+<script>
+const intro=document.getElementById("intro")
+const proposal=document.getElementById("proposal")
+const yesScreen=document.getElementById("yesScreen")
+const noScreen=document.getElementById("noScreen")
+const openBtn=document.getElementById("openBtn")
+const yes=document.getElementById("yes")
+const no=document.getElementById("no")
+const play=document.getElementById("playArea")
+const count=document.getElementById("count")
+
+let attempts=0
+
+openBtn.onclick=()=>{
+intro.classList.add("hidden")
+setTimeout(()=>proposal.classList.remove("hidden"),300)
+for(let i=0;i<20;i++)setTimeout(heart,i*90)
+}
+
+function heart(){
+const h=document.createElement("div")
+h.className="heart"
+h.textContent=["💖","💕","💗","✨"][Math.floor(Math.random()*4)]
+h.style.left=Math.random()*100+"vw"
+h.style.animationDuration=(3+Math.random()*2)+"s"
+document.body.appendChild(h)
+setTimeout(()=>h.remove(),5000)
+}
+
+function dodge(e){
+e.preventDefault()
+e.stopPropagation()
+if(attempts>=25)return
+attempts++
+count.textContent=attempts
+const x=Math.random()*(play.clientWidth-no.offsetWidth)
+const y=Math.random()*(play.clientHeight-no.offsetHeight)
+no.style.left=x+"px"
+no.style.top=y+"px"
+no.style.transform="none"
+navigator.vibrate&&navigator.vibrate(18)
+if(attempts===25){
+setTimeout(()=>{
+proposal.classList.add("hidden")
+noScreen.classList.remove("hidden")
+},180)
+}
+}
+
+["pointerdown","pointerenter","touchstart","click"].forEach(ev=>{
+no.addEventListener(ev,dodge,{passive:false})
+})
+
+yes.onclick=()=>{
+proposal.classList.add("hidden")
+setTimeout(()=>yesScreen.classList.remove("hidden"),300)
+confetti()
+for(let i=0;i<50;i++)setTimeout(heart,i*60)
+}
+
+function confetti(){
+for(let i=0;i<180;i++){
+const c=document.createElement("div")
+c.className="confetti"
+c.style.left=Math.random()*100+"vw"
+c.style.setProperty("--x",(Math.random()*240-120)+"px")
+c.style.background=`hsl(${Math.random()*360},95%,65%)`
+c.style.animationDuration=(2+Math.random()*2)+"s"
+document.body.appendChild(c)
+setTimeout(()=>c.remove(),4500)
+}
+}
+</script>
+
+</body>
+</html>
+```
